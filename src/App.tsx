@@ -13,9 +13,21 @@ function App() {
   useEffect(() => {
     // alert("You can use also responsive(phone) page");
   }, []);
+
+  const resetMessages = () => {
+    setMsgList([]);    
+  }
   
   return (
     <Router>
+      <Button 
+      disabled={ msgList.length > 0 ? false : true } 
+              fullWidth={true} 
+              variant="contained" 
+              color="primary" 
+              onClick={resetMessages}>
+                Reset Messages
+      </Button>
       <Nav/>
       <UserContext.Provider value={{msgList, setMsgList}}>
         <Switch>

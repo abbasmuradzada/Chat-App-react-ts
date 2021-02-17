@@ -1,5 +1,5 @@
 import React, {useState, FC, useContext, FormEvent, ChangeEvent} from 'react';
-import { UserContext } from '../../Store';
+import { IMsjObj, UserContext } from '../../Store';
 import {Box, Input, Button, InputLabel } from '@material-ui/core'
 import '../style.scss';
 
@@ -23,7 +23,7 @@ const User2:FC = () => {
     }
     return (
         <div className='user-page'>
-            <div className='message-box'>
+            <div onClick={() => setMsgList([])}  className='message-box'>
                 {msgList.map((msg:any) => (
                     <Box className= {msg.user == 2 ? 'message-row message-row_user1' : 'message-row message-row_user2'} key={msg.id}>
                         {msg.user == 2 ? <sup>{msg.time}</sup> : null} 

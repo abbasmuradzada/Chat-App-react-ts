@@ -12,7 +12,7 @@ const Nav: FC = () => {
   
     return (
         <div>
-            <Box display='flex' mb={1} justifyContent='space-between'>
+            <Box display='flex' mt={1} mb={1} justifyContent='space-between'>
                 <Box width='48%'>
                     <Button onClick={() => redirectUser('/user1')}
                             disabled={location.pathname == '/user1' ? true : false} 
