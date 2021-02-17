@@ -18,11 +18,10 @@ const User1:FC = () => {
             id: msgList.length+1,
             time: ` ${`${date.getHours()}`.length > 1 ? date.getHours(): `0${date.getHours()}`}:${`${date.getMinutes()}`.length > 1 ? date.getMinutes():`0${date.getMinutes()}`}`
         };
+        console.log(term.indexOf(' '));
+        
         term.length >= 1 ? setMsgList(msgList.concat(newItem)) : alert('Bosh Mesaj Gondermek Olmaz')
         setTerm('');
-    
-        console.log(`${date.getMinutes()}`.length);
-        
     }
     return (
         <div className='user-page'>
@@ -30,7 +29,7 @@ const User1:FC = () => {
                 {msgList.map((msg:any) => (
                     <Box className= {msg.user == 1 ? 'message-row message-row_user1' : 'message-row message-row_user2'} key={msg.id}>
                         {msg.user == 1 ? <sup>{msg.time}</sup> : null} 
-                        {msg.message}
+                        <span>{msg.message}</span>
                         {msg.user == 1 ? null : <sup>{msg.time}</sup>} 
                     </Box>
                 ))}

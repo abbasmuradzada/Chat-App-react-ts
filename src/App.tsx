@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { UserContext, context, IMsjObj } from './Store';
-import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory  } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect, useHistory  } from "react-router-dom";
 import {Box, Input, Button} from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete';
 import User1 from './Components/User1';
 import User2 from './Components/User2';
 import Nav from './Components/Nav';
@@ -20,12 +21,12 @@ function App() {
   
   return (
     <Router>
-      <Button 
-      disabled={ msgList.length > 0 ? false : true } 
+      <Button disabled={ msgList.length > 0 ? false : true } 
               fullWidth={true} 
               variant="contained" 
               color="primary" 
               onClick={resetMessages}>
+                <DeleteIcon/>
                 Reset Messages
       </Button>
       <Nav/>

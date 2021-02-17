@@ -18,9 +18,11 @@
         .message-row{
             display: flex;
             justify-content: space-between;
+            >span{
+                word-break: break-all;    
+            }
             >sup{
                 font-size: 10px;
-                color: #E3E3E3;
             }
             @media only screen and (max-width: 400px) {
                 width: 100%;
@@ -35,10 +37,16 @@
             &_user1{
                 background-color: #000;
                 text-align: right;
+                & >sup{
+                    color: gray;
+                }
             }
             &_user2{
                 background-color: #8A8B75;
                 text-align: left;
+                & >sup{
+                    color: #E3E3E3;
+                }
             }
         }
     }

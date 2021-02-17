@@ -27,7 +27,7 @@ const User2:FC = () => {
                 {msgList.map((msg:any) => (
                     <Box className= {msg.user == 2 ? 'message-row message-row_user1' : 'message-row message-row_user2'} key={msg.id}>
                         {msg.user == 2 ? <sup>{msg.time}</sup> : null} 
-                        {msg.message}
+                        <span>{msg.message}</span>
                         {msg.user == 2 ? null : <sup>{msg.time}</sup>} 
                     </Box>
                 ))}

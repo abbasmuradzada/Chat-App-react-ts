@@ -23,4 +23,10 @@ export let context: IMsjObj[] = [
         time: '13:24'
 
     },
+    {
+        message: 'You’re such a hard worker, that is a great trait',
+        user: 1,
+        id: 3,
+        time: '13:28'
+    }
 ];
