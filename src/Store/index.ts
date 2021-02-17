@@ -6,27 +6,21 @@ export interface IMsjObj {
     message: string,
     user: number,
     id: number,
+    time: string
 }
 
 export let context: IMsjObj[] = [
     {
-        message: 'salam necesen',
+        message: "Hey what's up man",
         user: 1,
-        id: 1
+        id: 1,
+        time: '13:23'
     },
     {
-        message: 'salam yaxsiyam, sen necesen',
+        message: 'Nothing, just tired',
         user: 2,
-        id: 2
+        id: 2,
+        time: '13:24'
+
     },
-    {
-        message: 'sagol yaxsiyam',
-        user: 1,
-        id: 3
-    },
-    {
-        message: 'lap yaxsi',
-        user: 2,
-        id: 4
-    }
 ];

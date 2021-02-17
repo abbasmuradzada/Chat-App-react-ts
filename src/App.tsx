@@ -11,7 +11,7 @@ function App() {
   const [ msgList, setMsgList ] = useState<IMsjObj[]>(context)
   
   useEffect(() => {
-    alert("You can use also responsive(phone) page");
+    // alert("You can use also responsive(phone) page");
   }, []);
   
   return (

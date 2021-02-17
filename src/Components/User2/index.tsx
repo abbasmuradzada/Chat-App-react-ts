@@ -11,10 +11,12 @@ const User2:FC = () => {
     }
     const sendMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        let date = new Date();
         const newItem = {
             message: term,
             user: 2,
             id: msgList.length+1,
+            time: ` ${`${date.getHours()}`.length > 1 ? date.getHours():`0${date.getHours()}`}:${`${date.getMinutes()}`.length > 1 ? date.getMinutes():`0${date.getMinutes()}`}`
         };
         term.length >= 1 ? setMsgList(msgList.concat(newItem)) : alert('Bosh Mesaj Gondermek Olmaz')
         setTerm('');
@@ -24,7 +26,9 @@ const User2:FC = () => {
             <div className='message-box'>
                 {msgList.map((msg:any) => (
                     <Box className= {msg.user == 2 ? 'message-row message-row_user1' : 'message-row message-row_user2'} key={msg.id}>
+                        {msg.user == 2 ? <sup>{msg.time}</sup> : null} 
                         {msg.message}
+                        {msg.user == 2 ? null : <sup>{msg.time}</sup>} 
                     </Box>
                 ))}
             </div>
