@@ -2,13 +2,13 @@ import { createContext } from 'react';
 
 export const UserContext = createContext<any>(null);
 
-export interface msjObj {
+export interface IMsjObj {
     message: string,
     user: number,
     id: number,
 }
 
-export let context: msjObj[] = [
+export let context: IMsjObj[] = [
     {
         message: 'salam necesen',
         user: 1,
