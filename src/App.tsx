@@ -1,25 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { UserContext, context, msjObj } from './Store';
+import { BrowserRouter as Router, Switch, Route, Link, Redirect, useHistory  } from "react-router-dom";
+import {Box, Input, Button} from '@material-ui/core'
+import User1 from './Components/User1';
+import User2 from './Components/User2';
+import Nav from './Components/Nav';
+import './App.scss';
 
 function App() {
+  const [ msgList, setMsgList ] = useState<msjObj[]>(context)
+  
+  useEffect(() => {
+    alert("You can use also responsive(phone) page");
+  }, []);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Nav/>
+      <UserContext.Provider value={{msgList, setMsgList}}>
+        <Switch>
+          <Route exact path="/">
+            <Redirect to="/user1"/>
+          </Route>  
+          <Route path = "/user1">
+            <User1/>
+          </Route>
+          <Route path = "/user2">
+            <User2/>
+          </Route>
+        </Switch>
+      </UserContext.Provider>
+    </Router>
   );
 }
 
