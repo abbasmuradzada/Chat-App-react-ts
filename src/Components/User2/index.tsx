@@ -18,12 +18,12 @@ const User2:FC = () => {
             id: msgList.length+1,
             time: ` ${`${date.getHours()}`.length > 1 ? date.getHours():`0${date.getHours()}`}:${`${date.getMinutes()}`.length > 1 ? date.getMinutes():`0${date.getMinutes()}`}`
         };
-        term.length >= 1 ? setMsgList(msgList.concat(newItem)) : alert('Bosh Mesaj Gondermek Olmaz')
+        term.length >= 1 ? setMsgList(msgList.concat(newItem)) : console.log("empty message");
         setTerm('');
     }
     return (
         <div className='user-page'>
-            <div onClick={() => setMsgList([])}  className='message-box'>
+            <div className='message-box'>
                 {msgList.map((msg:any) => (
                     <Box className= {msg.user == 2 ? 'message-row message-row_user1' : 'message-row message-row_user2'} key={msg.id}>
                         {msg.user == 2 ? <sup>{msg.time}</sup> : null} 
@@ -34,8 +34,17 @@ const User2:FC = () => {
             </div>
             <form onSubmit={(e) => sendMessage(e)}>
                 <Box width='100%' flexDirection="column" display='flex'>
-                    <Input onChange={(e) => changeMessage(e)} className='msg-input' value={term} placeholder='enter message' color='primary'/>
-                    <Button variant="contained" color="primary" type='submit'>Send</Button>
+                    <Input  onChange={(e) => changeMessage(e)} 
+                            className='msg-input' 
+                            value={term} 
+                            placeholder='enter message' 
+                            color='primary'/>
+                    <Button disabled={term.length >= 1 ? false : true} 
+                            variant="contained" 
+                            color="primary" 
+                            type='submit'>
+                                Send
+                    </Button>
                 </Box>
             </form>    
         </div>

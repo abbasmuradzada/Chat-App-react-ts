@@ -18,9 +18,7 @@ const User1:FC = () => {
             id: msgList.length+1,
             time: ` ${`${date.getHours()}`.length > 1 ? date.getHours(): `0${date.getHours()}`}:${`${date.getMinutes()}`.length > 1 ? date.getMinutes():`0${date.getMinutes()}`}`
         };
-        console.log(term.indexOf(' '));
-        
-        term.length >= 1 ? setMsgList(msgList.concat(newItem)) : alert('Bosh Mesaj Gondermek Olmaz')
+        term.length >= 1 ? setMsgList(msgList.concat(newItem)) : console.log("empty message");
         setTerm('');
     }
     return (
@@ -37,7 +35,12 @@ const User1:FC = () => {
             <form onSubmit={(e) => sendMessage(e)}>
                 <Box width='100%' flexDirection="column" display='flex'>
                     <Input onChange={(e) => changeMessage(e)} className='msg-input' value={term} placeholder='enter message' color='primary'/>
-                    <Button variant="contained" color="primary" type='submit'>Send</Button>
+                    <Button disabled={term.length >= 1 ? false : true} 
+                            variant="contained" 
+                            color="primary" 
+                            type='submit'>
+                                Send
+                    </Button>
                 </Box>
             </form>    
         </div>

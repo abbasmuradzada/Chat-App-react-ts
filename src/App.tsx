@@ -16,7 +16,9 @@ function App() {
   }, []);
 
   const resetMessages = () => {
-    setMsgList([]);    
+    setMsgList([]);   
+    console.log('reseted');
+     
   }
   
   return (
