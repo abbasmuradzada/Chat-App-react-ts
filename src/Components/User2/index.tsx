@@ -1,4 +1,4 @@
-import React, {useState, FC, useContext, FormEvent, ChangeEvent} from 'react';
+import React, {useState, FC, useContext, FormEvent, ChangeEvent, useEffect, useRef} from 'react';
 import { IMsjObj, UserContext } from '../../Store';
 import {Box, Input, Button, InputLabel } from '@material-ui/core'
 import '../style.scss';
@@ -9,6 +9,14 @@ const User2:FC = () => {
     const changeMessage = (e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
         setTerm(e.target.value)
     }
+
+    const messagesEndRef:any = useRef(null)
+
+    useEffect(() => {
+        const scroll = messagesEndRef.current.scrollHeight - messagesEndRef.current.clientHeight;
+        messagesEndRef.current.scrollTo(0, scroll + 50);
+    })
+
     const sendMessage = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         let date = new Date();
@@ -23,7 +31,7 @@ const User2:FC = () => {
     }
     return (
         <div className='user-page'>
-            <div className='message-box'>
+            <div ref={messagesEndRef} className='message-box'>
                 {msgList.map((msg:any) => (
                     <Box className= {msg.user == 2 ? 'message-row message-row_user1' : 'message-row message-row_user2'} key={msg.id}>
                         {msg.user == 2 ? <sup>{msg.time}</sup> : null} 
